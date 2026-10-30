@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5470870438995680660}
   - component: {fileID: 8488318449745707317}
   - component: {fileID: 6551215399528470174}
+  - component: {fileID: 8893006927080720869}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -122,6 +123,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 6084097203217116636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d2ef33c13240c781b6b2552c2bca5d7, type: 3}
+  m_Script: {fileID: 11500000, guid: cc51157d67dc26c26aae4410604294de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  startSpeed: 10
+  speed: 0
+  startHealth: 100
+  worth: 50
+  deathEffect: {fileID: 0}
+  healthBar: {fileID: 0}
+--- !u!114 &8893006927080720869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6084097203217116636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613b9e2b041dad887ad0beea825662a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
