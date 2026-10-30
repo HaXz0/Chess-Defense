@@ -28,8 +28,10 @@ public class WaveSpawner : MonoBehaviour {
 
 		if (waveIndex == waves.Length)
 		{
-			gameManager.WinLevel();
+			if (gameManager != null)
+				gameManager.WinLevel();
 			this.enabled = false;
+			return;
 		}
 
 		if (countdown <= 0f)
@@ -43,7 +45,8 @@ public class WaveSpawner : MonoBehaviour {
 
 		countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
 
-		waveCountdownText.text = string.Format("{0:00.00}", countdown);
+		if (waveCountdownText != null)
+			waveCountdownText.text = string.Format("{0:00.00}", countdown);
 	}
 
 	IEnumerator SpawnWave ()

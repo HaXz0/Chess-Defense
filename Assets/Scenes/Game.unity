@@ -850,6 +850,7 @@ GameObject:
   - component: {fileID: 89935535}
   - component: {fileID: 89935536}
   - component: {fileID: 89935537}
+  - component: {fileID: 89935538}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -885,16 +886,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
   waves:
-  - enemy: {fileID: 919132149155446097, guid: 1946abc5ef6848c46a5e5cc0cd0103f6, type: 3}
+  - enemy: {fileID: 3752759028406704209, guid: 29be144be1febc744bea44dfe9ee884d, type: 3}
     count: 1
     rate: 1
-  - enemy: {fileID: 919132149155446097, guid: 1946abc5ef6848c46a5e5cc0cd0103f6, type: 3}
+  - enemy: {fileID: 3752759028406704209, guid: 29be144be1febc744bea44dfe9ee884d, type: 3}
     count: 2
     rate: 2
-  - enemy: {fileID: 919132149155446097, guid: 1946abc5ef6848c46a5e5cc0cd0103f6, type: 3}
+  - enemy: {fileID: 3752759028406704209, guid: 29be144be1febc744bea44dfe9ee884d, type: 3}
     count: 3
     rate: 3
-  - enemy: {fileID: 919132149155446097, guid: 1946abc5ef6848c46a5e5cc0cd0103f6, type: 3}
+  - enemy: {fileID: 3752759028406704209, guid: 29be144be1febc744bea44dfe9ee884d, type: 3}
     count: 4
     rate: 4
   spawnPoint: {fileID: 1156793509}
@@ -916,6 +917,20 @@ MonoBehaviour:
   buildEffect: {fileID: 0}
   sellEffect: {fileID: 0}
   nodeUI: {fileID: 0}
+--- !u!114 &89935538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89935534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8230233ba9e9bd3b910d5184445def2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  startMoney: 400
+  startLives: 20
 --- !u!1001 &95648994
 PrefabInstance:
   m_ObjectHideFlags: 0

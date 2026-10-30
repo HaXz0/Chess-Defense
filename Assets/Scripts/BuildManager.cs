@@ -36,13 +36,15 @@ public class BuildManager : MonoBehaviour {
 		selectedNode = node;
 		turretToBuild = null;
 
-		nodeUI.SetTarget(node);
+		if (nodeUI != null)
+			nodeUI.SetTarget(node);
 	}
 
 	public void DeselectNode()
 	{
 		selectedNode = null;
-		nodeUI.Hide();
+		if (nodeUI != null)
+			nodeUI.Hide();
 	}
 
 	public void SelectTurretToBuild (TurretBlueprint turret)
