@@ -1,16 +1,19 @@
 using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
 	public static bool GameIsOver;
 
-	public GameObject gameOverUI;
-	public GameObject completeLevelUI;
+	public Text statusText;
+	private WaveSpawner waveSpawner;
 
-	void Start ()
+	void Awake ()
 	{
 		GameIsOver = false;
+		waveSpawner = GetComponent<WaveSpawner>();
+		if (statusText != null)
+			statusText.text = string.Empty;
 	}
 
 	// Update is called once per frame
@@ -20,20 +23,25 @@ public class GameManager : MonoBehaviour {
 
 		if (PlayerStats.Lives <= 0)
 		{
-			EndGame();
+			FinishGame("GAME OVER");
 		}
-	}
-
-	void EndGame ()
-	{
-		GameIsOver = true;
-		gameOverUI.SetActive(true);
 	}
 
 	public void WinLevel ()
 	{
+		FinishGame("VICTORY");
+	}
+
+	void FinishGame (string message)
+	{
+		if (GameIsOver)
+			return;
+
 		GameIsOver = true;
-		completeLevelUI.SetActive(true);
+		if (statusText != null)
+			statusText.text = message;
+		if (waveSpawner != null)
+			waveSpawner.StopSpawning();
 	}
 
 }

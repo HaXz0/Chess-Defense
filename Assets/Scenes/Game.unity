@@ -901,7 +901,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1156793509}
   timeBetweenWaves: 5
   waveCountdownText: {fileID: 1927254477}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 89935537}
 --- !u!114 &89935537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,12 +911,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 89935534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10cbabdbe2b76e7db94a0dd71f7866d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 97618a5fd5986ababbd24dd5c4c02e46, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BuildManager
-  buildEffect: {fileID: 0}
-  sellEffect: {fileID: 0}
-  nodeUI: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  statusText: {fileID: 1927254477}
 --- !u!114 &89935538
 MonoBehaviour:
   m_ObjectHideFlags: 0
