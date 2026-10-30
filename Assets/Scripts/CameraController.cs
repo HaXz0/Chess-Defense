@@ -18,21 +18,24 @@ public class CameraController : MonoBehaviour {
 			return;
 		}
 
+		Vector3 forward = Vector3.ProjectOnPlane(transform.forward, Vector3.up).normalized;
+		Vector3 right = Vector3.ProjectOnPlane(transform.right, Vector3.up).normalized;
+
 		if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
 		{
-            transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
+			transform.Translate(forward * panSpeed * Time.deltaTime, Space.World);
 		}
 		if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness)
 		{
-			transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
+			transform.Translate(-forward * panSpeed * Time.deltaTime, Space.World);
 		}
 		if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness)
 		{
-			transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
+			transform.Translate(right * panSpeed * Time.deltaTime, Space.World);
 		}
 		if (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness)
 		{
-			transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
+			transform.Translate(-right * panSpeed * Time.deltaTime, Space.World);
 		}
 
 		float scroll = Input.GetAxis("Mouse ScrollWheel");
