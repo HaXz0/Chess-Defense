@@ -104,8 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf6c33319834d63bb5a04ad2fa33401, type: 3}
   m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Node
-  turretPrefab: {fileID: 100100000, guid: 578c7e8736da7e745840a4fe1a14d965, type: 3}
-  bulletPrefab: {fileID: 100100000, guid: 7fa25678369432371ab413de1109a421, type: 3}
+  turretPrefab: {fileID: 919132149155446097, guid: 1946abc5ef6848c46a5e5cc0cd0103f6, type: 3}
+  bulletPrefab: {fileID: 2889018448107537209, guid: 7fa25678369432371ab413de1109a421, type: 3}
+  turretMaterial: {fileID: 2100000, guid: 7ce5c7b995d0ec04b83a19a58106caf5, type: 2}
   cost: 100
   positionOffset: {x: 0, y: 2.75, z: 0}
 --- !u!65 &6187988596104739950
