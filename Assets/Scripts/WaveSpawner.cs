@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour {
 
@@ -13,12 +12,13 @@ public class WaveSpawner : MonoBehaviour {
 	public float timeBetweenWaves = 5f;
 	private float countdown = 2f;
 
-	public Text waveCountdownText;
-
 	public GameManager gameManager;
 
 	private int waveIndex = 0;
 	private bool isStopped;
+	public int CurrentWave { get; private set; }
+	public int WaveCount { get { return waves == null ? 0 : waves.Length; } }
+	public float Countdown { get { return countdown; } }
 
 	void Start ()
 	{
@@ -29,6 +29,7 @@ public class WaveSpawner : MonoBehaviour {
 			StopSpawning();
 			return;
 		}
+		CurrentWave = waves.Length > 0 ? 1 : 0;
 		if (spawnPoint == null)
 		{
 			Debug.LogError("WaveSpawner has no spawn point.");
@@ -66,8 +67,6 @@ public class WaveSpawner : MonoBehaviour {
 
 		countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
 
-		if (waveCountdownText != null)
-			waveCountdownText.text = string.Format("{0:00.00}", countdown);
 	}
 
 	public void StopSpawning ()
@@ -88,6 +87,7 @@ public class WaveSpawner : MonoBehaviour {
 		}
 
 		PlayerStats.Rounds++;
+		CurrentWave = waveIndex + 1;
 
 		EnemiesAlive = wave.count;
 

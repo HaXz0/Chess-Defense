@@ -34,6 +34,25 @@ public class Turret : MonoBehaviour {
 
 	public Transform firePoint;
 
+	public bool Configure (GameObject projectilePrefab)
+	{
+		if (projectilePrefab == null)
+			return false;
+
+		bulletPrefab = projectilePrefab;
+		partToRotate = transform;
+		fireRate = Mathf.Max(fireRate, 0.1f);
+		if (firePoint == null)
+		{
+			GameObject point = new GameObject("Fire Point");
+			point.transform.SetParent(transform, false);
+			point.transform.localPosition = Vector3.up * 1.5f;
+			firePoint = point.transform;
+		}
+
+		return true;
+	}
+
 	// Use this for initialization
 	void Start () {
 		InvokeRepeating("UpdateTarget", 0f, 0.5f);
@@ -71,11 +90,13 @@ public class Turret : MonoBehaviour {
 		{
 			if (useLaser)
 			{
-				if (lineRenderer.enabled)
+				if (lineRenderer != null && lineRenderer.enabled)
 				{
 					lineRenderer.enabled = false;
-					impactEffect.Stop();
-					impactLight.enabled = false;
+					if (impactEffect != null)
+						impactEffect.Stop();
+					if (impactLight != null)
+						impactLight.enabled = false;
 				}
 			}
 
@@ -92,7 +113,7 @@ public class Turret : MonoBehaviour {
 			if (fireCountdown <= 0f)
 			{
 				Shoot();
-				fireCountdown = 1f / fireRate;
+				fireCountdown = 1f / Mathf.Max(fireRate, 0.1f);
 			}
 
 			fireCountdown -= Time.deltaTime;
@@ -102,6 +123,9 @@ public class Turret : MonoBehaviour {
 
 	void LockOnTarget ()
 	{
+		if (partToRotate == null)
+			return;
+
 		Vector3 dir = target.position - transform.position;
 		Quaternion lookRotation = Quaternion.LookRotation(dir);
 		Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
@@ -132,6 +156,9 @@ public class Turret : MonoBehaviour {
 
 	void Shoot ()
 	{
+		if (bulletPrefab == null || firePoint == null)
+			return;
+
 		GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 		Bullet bullet = bulletGO.GetComponent<Bullet>();
 
